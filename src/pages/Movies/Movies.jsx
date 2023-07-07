@@ -41,7 +41,7 @@ const Movies = () => {
           name="query"
           value={query}
           onChange={handleInputChange}
-          placeholder="input film name to search"
+          placeholder="enter the name to search..."
           required
         />
         <SubmitInput type="submit" value="Find my film" />
