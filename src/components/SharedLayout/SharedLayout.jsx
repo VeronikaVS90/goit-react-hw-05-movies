@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Outlet } from 'react-router-dom';
 import {
   Container,
@@ -27,6 +28,10 @@ const SharedLayout = () => {
       </Suspense>
     </Container>
   );
+};
+
+SharedLayout.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default SharedLayout;

@@ -1,5 +1,7 @@
+import PropTypes from 'prop-types';
 import { CastList } from "./Cast.styled";
 import { useMovie } from "hooks/useMovie";
+
 
 const Cast = () => {
     const [castList] = useMovie('Cast');
@@ -16,6 +18,20 @@ const Cast = () => {
             ))}
         </CastList>
     );
+};
+
+Cast.propTypes = {
+  castList: PropTypes.shape({
+    length: PropTypes.number.isRequired,
+    cast: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+        original_name: PropTypes.string.isRequired,
+        character: PropTypes.string.isRequired,
+      })
+    ).isRequired,
+  }).isRequired,
 };
 
 export default Cast;

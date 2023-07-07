@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { MovieAPI } from 'API/API';
 import { useEffect, useState } from 'react';
 import { Link, useSearchParams, useLocation } from 'react-router-dom';
@@ -59,6 +60,16 @@ const Movies = () => {
       )}
     </>
   );
+};
+
+Movies.propTypes = {
+  resultsList: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string,
+      name: PropTypes.string,
+    })
+  ).isRequired,
 };
 
 export default Movies;

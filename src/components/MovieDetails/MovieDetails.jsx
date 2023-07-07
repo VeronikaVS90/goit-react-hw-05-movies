@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Suspense } from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import {
@@ -8,6 +9,7 @@ import {
   MovieDetailsSection,
 } from './MovieDetails.styled';
 import { useMovie } from 'hooks/useMovie';
+
 
 const MovieDetails = () => {
   const [movieDetails] = useMovie('Details');
@@ -80,6 +82,21 @@ const MovieDetails = () => {
       )}
     </>
   );
+};
+
+MovieDetails.propTypes = {
+  movieDetails: PropTypes.shape({
+    poster_path: PropTypes.string,
+    title: PropTypes.string,
+    vote_average: PropTypes.number,
+    genres: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+      })
+    ),
+    overview: PropTypes.string,
+  }),
 };
 
 export default MovieDetails;

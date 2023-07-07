@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useMovie } from "hooks/useMovie";
 import { ReviewsList } from "./Reviews.styled";
 
@@ -16,6 +17,16 @@ const Reviews = () => {
                 ))}
         </ReviewsList>
     );
+};
+
+Reviews.propTypes = {
+  reviewsList: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      author: PropTypes.string.isRequired,
+      content: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };
 
 export default Reviews;
