@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Suspense } from 'react';
+import { useRef, Suspense } from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import {
   AdditionalInfo,
@@ -13,14 +13,16 @@ import { useMovie } from 'hooks/useMovie';
 
 const MovieDetails = () => {
   const [movieDetails] = useMovie('Details');
+
   const location = useLocation();
+  const previousPage = useRef(location.state?.from ?? '/');
 
   const { poster_path, title, vote_average, genres, overview } = movieDetails;
 
   return (
     <>
       <Link
-        to={location.state?.from ?? '/'}
+        to={previousPage.current}
         style={{
           textDecoration: 'none',
           color: '#000000',
@@ -42,8 +44,8 @@ const MovieDetails = () => {
       >
         {'<'} Go back
       </Link>
-      {!movieDetails ? (
-        <div>There are no film details for this film</div>
+      {Object.keys(movieDetails).length === 0 ? (
+        <div>There is no film details for this film</div>
       ) : (
         <MovieDetailsSection>
           <img
