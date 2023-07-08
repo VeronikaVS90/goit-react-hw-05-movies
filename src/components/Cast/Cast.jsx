@@ -8,7 +8,7 @@ const Cast = () => {
 
     return (
         <CastList>
-            {castList.length !== 0 && castList.cast.map(cast => (
+            {castList.length === 0 ? 'We don`t have any cast data for this movie' : castList.cast.map(cast => (
                 <li key={cast.id}>
                     <h4>{cast.name}</h4>
                     <p>
