@@ -9,6 +9,7 @@ import {
   MovieDetailsSection,
 } from './MovieDetails.styled';
 import { useMovie } from 'hooks/useMovie';
+import empty from './empty.jpg';
 
 
 const MovieDetails = () => {
@@ -50,10 +51,11 @@ const MovieDetails = () => {
         <MovieDetailsSection>
           <img
             src={
-              poster_path ? 'https://image.tmdb.org/t/p/w500' + poster_path : ''
-            }
-            alt={title}
-            width="200px"
+              poster_path ? 'https://image.tmdb.org/t/p/w500' + poster_path : empty
+              }
+              width={250}
+              height={250}
+              alt="poster"
           />
           <MovieDetailsInfo>
             <h2>{title}</h2>
